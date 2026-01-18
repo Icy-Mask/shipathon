@@ -1,0 +1,42 @@
+README - quick run
+
+Project structure:
+- backend/
+    - app.py
+    - requirements.txt
+    - model/ (place .pkl files here)
+- frontend/
+    - index.html
+    - main.js
+    - styles.css
+
+Steps to run locally (Linux / macOS). On Windows adapt venv activation.
+
+1) Backend
+$ cd backend
+$ python3 -m venv venv
+$ source venv/bin/activate
+(venv) $ pip install -r requirements.txt
+(venv) $ uvicorn app:app --reload --port 8000
+
+Check health:
+$ curl http://127.0.0.1:8000/health
+
+2) Frontend (static)
+Open another terminal and serve frontend folder:
+$ cd frontend
+# Option A: quick python server
+$ python3 -m http.server 5173
+# Open http://127.0.0.1:5173 in browser and test.
+
+# Option B: use Live Server extension in VS Code to serve frontend.
+
+Swapping models:
+- To use SVM fallback: put `lyrics_genre_linearSVC_calibrated.pkl` into backend/model/
+- To use final SBERT+SVM: put `final_sbert_svm_ensemble_w0.5.pkl` (bundle saved with keys: "svm_with_proba", "clf_sbert", "sbert_model_name", "ensemble_weight", "classes") into backend/model/
+- After replacing file, restart uvicorn server.
+
+Deployment:
+- Backend: Render / Railway / Heroku (use uvicorn command)
+- Frontend: Vercel / Netlify (deploy static site)
+

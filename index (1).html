@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Lyrics Genre Predictor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Lyrics Genre Predictor</h1>
+    <textarea id="lyrics" placeholder="Paste lyrics here..." rows="10"></textarea>
+    <div class="controls">
+      <button id="predictBtn">Predict Genre</button>
+      <button id="clearBtn">Clear</button>
+      <span id="status"></span>
+    </div>
+
+    <div id="result" class="result hidden">
+      <h2 id="genre"></h2>
+      <p id="confidence"></p>
+      <div id="scores"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
